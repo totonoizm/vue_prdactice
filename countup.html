@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+  <div id="hoge">
+    {{number}}
+    <button @click="countUp">kaunto</button>
+
+  </div>
+  <div id="app1">
+    <button class="button" @click="add">クリック</button>
+    <div>{{ message }}</div>
+  </div>
+  <div id="app2">
+    <button class="button" @click="add">クリック</button>
+    <div>{{ message }}</div>
+  </div>
+  <div id="app3">
+    <button class="button" @click="add">クリック</button>
+    <div>{{ message }}new Vue(インスタンス）を定義していないので動きません</div>
+  </div>
+  <script>
+    new Vue({
+      el: "#hoge",
+      data:{
+        number: 0
+      },
+      methods: {
+        countUp:function(){
+          this.number = this.number + 1
+        }
+      }
+    });
+    new Vue({
+      el: "#app1",
+      data:{
+        message: "",
+        count: 0
+      },
+      methods:{
+        add(){
+          this.message = `ボタンを${++this.count}回クリックしました`;
+        }
+      }
+    });
+    new Vue({ //インスタンス作成
+      el: "#app2",　// elは#app(これはクラス)へ中身（data)を展開する
+      data:{
+        message: "app2クラスを動かすアプリケーションを書いているんだ",
+        //オプションとなっている
+      }
+    });
+  </script>
+</body>
+</html>
