@@ -1,0 +1,54 @@
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+  <style>
+    .red{
+      color:red
+    }
+    .green{
+      color:green
+    }
+    .blue{
+      color:blue
+    }
+  </style>
+  <div id="app1">
+    {{ number }}
+    <button @click="countUp">クリック</button>
+    <div v-if="number">条件で表示</div> //if
+    <ul>
+      <li v-for="item in items">{{item}}</li> <!-- 配列for文 -->
+    </ul>
+    <div :class="color">カラー</div>  // ???
+    <input type="text" v-model="color">
+    {{custom_color}} <!-- V-model getみたいな　双方向性　おプレースホルダーできるやんけ！ -->
+
+  </div>
+  <script>
+    new Vue({
+      el: "#app1",
+      data:{
+        number: 0,
+        items:[1,2,3],
+        color: "カラーを入れてください",
+
+      },
+      methods:{
+        countUp:function(){
+          this.number = this.number +1
+        }
+      },
+      computed:{
+        custom_color:function(){
+          return this.color.toUpperCase();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
