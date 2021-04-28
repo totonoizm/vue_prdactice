@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Test_Vue</title>
+</head>
+<body>
+    <div  id="app1">
+        <p><input v-model="message" type="text"></p>
+        <p>{{ message }}</p>
+        <p v-show="toggle">
+            <a v-bind:href="url">公式サイト</a>
+        </p>
+        <button @click="onclick">osite</button>
+    </div>
+    <div  id="app2">
+        <ul>
+            <li v-for="l in languages">{{ l }}</li>
+        </ul>
+    </div>
+    <div  id="app3">
+        <p><input v-model="message1" type="text"></p>
+
+        <p>{{ message1 }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="js/test.js"></script>
+</body>
+</html>

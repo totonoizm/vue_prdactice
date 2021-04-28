@@ -1,0 +1,40 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <title>Vue.js</title>
+  </head>
+  <body>
+    <div id="app">
+      <hello-component></hello-component>
+      <p v-pre>{{ message }}</p>
+      //v-pre 構文を無効化する
+      <hello-component></hello-component>
+      <hello-component></hello-component>
+      <hello-component></hello-component>
+      <hello-component></hello-component>
+
+    </div>
+    <hello-component></hello-component>
+    <hello-component></hello-component>
+
+    <div id="app2">
+      <p v-pre>{{ message }}</p>
+      //v-pre 構文を無効化する
+    </div>
+    <script>
+      Vue.component("hello-component", { //v-component 要素を作ることができる　再利用もできる
+        template: "<p>Hello</p>"
+      })
+      new Vue({
+        el: "#app",
+        data:{
+          message:"hogehoge"
+        }
+      })
+    </script>
+  </body>
+</html>
