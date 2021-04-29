@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
 
     <title>Document</title>
 </head>
 <body>
-    <div id="app">{{ message}}</div>
+    <div id="app">
+        <h2>TODO LIST</h2>
+        <form v-on:submit.prevent>
+            <input v-model="new_item" type="text">
+            <button @click="add_item">Add</button>
+        </form>
+        <ul>
+            <li v-for="(todo, index) in todos">
+                <input type="checkbox" v-model="todo.check">
+                <span v-bind:class="{ uncheck: todo.check}">{{ todo.item }}</span>
+                <button @click="delete_item(index)">delete</button>
+            </li>
+        </ul>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="js/index.js"></script>
 </body>
