@@ -10,20 +10,26 @@
 </head>
 <body>
   <div id="app">
-    <p>{{message}}</p>
-    <p>{{number + 3}}</p> 
+    <p v-once>{{message}}</p>
+    <a v-bind="object">Google</a>
+    <p>{{number + 3}}</p>
     <p>{{ok ? "YES" : "NO"}}</p>
     <p>{{ sayHi() }}</p>
-
+    <div v-html="html"></div>
     <button v-on:click="reverseMessage">おせ！</button>
   </div>
   <script>
     const app = new Vue({
       el: "#app",
       data:{
-        message: "ohoige!",
+        message: "hello!",
         number: 3,
-        ok: true
+        ok: true,
+        html: "<h1> h1です</h1>",
+        url:"https://google.com",
+        object: {
+          href: "https://twitter.com",
+                }
       },
       methods:{
         reverseMessage: function(){
@@ -32,6 +38,7 @@
 
           },
           sayHi: function(){
+            this.message = "hello Vue.js"
             return "hi";
         }
       }
