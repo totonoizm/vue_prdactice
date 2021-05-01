@@ -10,9 +10,26 @@
   <body>
     <div id="app">
         <p>{{ number }} クリックした</p>
-        <button v-on:click="countUp">kaunto</button>
+        <button v-on:click="countUp(10)">カウント</button>
     </div>
+    <div id="app2">
+        <button v-on:mouseover="mouseOverAction" v-on:mouseleave="mouseLeaveAction">{{message}}</button>
+        <p v-if="hoverFlag">hoverされました</p>
+    </div>
+    <div id="mouseOver">
+        <button v-on:mouseover="mouseOverAction" v-on:mouseleave="mouseLeaveAction">{{message}}</button>
+        <p v-if="hoverFlag">hoverた</p>
+    </div>
+    <div id="mouseMove">
+      <p v-on:mousemove="changeMousePosition(10, $event)">マウスを載せてください
+        <span v-on:mousemove.stop>反応しないでください</span>
+        <a v-on:click.prevent.stop href="https://google.com">google</a>
+      </p>
+      <p>X:{{x}},Y:{{y}}</p>
+      <input type="text" v-on:keyup.enter="myAlert">
 
+
+    </div>
     <script>
       new Vue({
         el: "#app",
@@ -20,10 +37,58 @@
           number: 0
         },
         methods: {
-            countUp: function(){ //v-onは引数を取る ：DOMイベントを入れる　今回はclick 
-                this.number  += 1
+            countUp: function(times){//v-onは引数を取る ：DOMイベントを入れる 今回はclick
+                this.number  += 1 * times
             }
         },
+      }),
+      new Vue({
+          el: "#app2",
+          data:{
+            message: "Hoverしてください",
+            hoverFlag: false
+          },
+          methods:{
+            mouseOverAction(){
+                this.hoverFlag = true
+            },
+            mouseLeaveAction(){
+                this.hoverFlag = false
+            }
+          }
+      }),
+      new Vue({
+          el: "#mouseOver",
+          data:{
+            message: "Hoverしてください",
+            hoverFlag: false
+          },
+          methods:{
+            mouseOverAction(){
+                this.hoverFlag = true
+            },
+            mouseLeaveAction(){
+                this.hoverFlag = false
+            }
+          }
+      }),
+      new Vue({
+          el: "#mousemove",
+          data:{
+            x:0,
+            y:0
+          },
+          methods:{
+            changeMousePosition: function(divideNumber, event){
+              this.x = event.clientX / divideNumber;
+              this.y = event.clientY / divideNumber;
+            },
+            myAlert(){
+              alert("alert");
+            }
+
+          }
+
       })
     </script>
   </body>

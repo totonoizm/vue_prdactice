@@ -17,18 +17,17 @@
       color:blue
     }
   </style>
-  <div id="app1">
-    {{ number }}
-    <button @click="countUp">クリック</button>
-    <div v-if="number">条件で表示</div> //if
-    <ul>
-      <li v-for="item in items">{{item}}</li> <!-- 配列for文 -->
-    </ul>
-    <div :class="color">カラー</div>  // ???
-    <input type="text" v-model="color">
-    {{custom_color}} <!-- V-model getみたいな　双方向性　プレースホルダーできるやんけ！ -->
-
-  </div>
+    <div id="app1">
+      {{ number }}
+      <button @click="countUp">クリック</button>
+      <div v-if="number">条件で表示</div> //if
+      <ul>
+        <li v-for="item in items">{{item}}</li> <!-- 配列for文 -->
+      </ul>
+      <div :class="color">カラー</div>  // ???
+      <input type="text" v-model="color">
+      {{custom_color}} <!-- V-model getみたいな 双方向性 プレースホルダーできるやんけ！ -->
+    </div>
   <script>
     new Vue({
       el: "#app1",
@@ -36,7 +35,6 @@
         number: 0,
         items:[1,2,3],
         color: "カラーを入れてください",
-
       },
       methods:{
         countUp:function(){
