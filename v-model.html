@@ -1,0 +1,51 @@
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+
+    <title>Vue.js</title>
+  </head>
+  <body>
+        <div id="app">
+            <input type="text" v-model="message">
+            <h1>{{ message }}</h1>
+        </div>
+        <div id="count">
+            <p>{{ counter }}</p>
+            <button @click="counter += 1">+1</button>
+            <p>{{ lessThanThree }}</p>
+        </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                message: "今日は雨でした"
+            }
+        }),
+        new Vue({
+            el:"#count",
+            data:{
+                counter: 0
+            },
+            computed:{
+                lessThanThree: function(){
+                    return this.counter > 3 ? "3より上" : "3以下"
+                }
+            },
+            watch:{　// 非同期処理の際によく使う
+                counter: function(){
+                    const vm = this;
+                    setTimeout(function(){
+                        vm.counter = 0
+                    },3000)
+
+                }
+            }
+        })
+
+    </script>
+  </body>
+</html>
