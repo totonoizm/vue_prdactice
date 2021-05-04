@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+      <input type="radio" value="Vue" v-model="picked">
+      <label for="vue">Vue</label>
+      <br>
+      <input type="radio" value="Angular" v-model="picked">
+      <label for="vue">Angular</label>
+      <br>
+      <input type="radio" value="React" v-model="picked">
+      <label for="vue">React</label>
+      <br>
+      <span>あなたが選んだのは: {{ picked }}</span>
+</div>
+<div id="app2">
+    <h2>3文字以下で入力せよ（バリデーション）</h2>
+    <p>
+        <input id="field" type="text" name="name" size="40" maxlength="30" v-model="name"/>
+    </p>
+    <div :style="displayObject">{{ message }}</div> 
+    <!-- style="displayObjectはスタイルオブジェクトをバインド 初期状態は非表示" -->
+</div>
+  <script>
+      new Vue({
+          el:"#app",
+          data: {
+              picked:null
+          }
+      }),
+      new Vue({
+          el:"#app2",
+          computed:{
+              displayObject(){ //エラー文言のスタイルオブジェクト
+                  return{
+                      display: this.active ? "block" : "none", "font-weight" : "bold",color: "red"
+                  };
+              }
+          },
+          data:{
+              name:"", //インプット情報
+              active:false, //デフォルトは非表示
+              message: "エラー文言を設定する"
+          },
+          watch:{
+              name(value){ //文字入力ごとに処理が実行される
+                  if(3 < value.length){
+                      this.active = true;
+                      this.message = "3文字以下で入力してください";
+                  }else{
+                      this.active = false;
+                  }
+              }
+          }
+      })
+  </script>
+</body>
+</html>
