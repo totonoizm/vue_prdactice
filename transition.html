@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+</head>
+<body>
+    .fade-enter-active, fade-leave-active{
+        transition: opacity 10s;
+    }
+    <div id="app">
+        <button @click="show = !show">
+            Toggle
+        </button>
+        <transition name="fade">
+            <p v-if="show">Hello</p>
+        </transition>
+    </div>
+  <script>
+
+  </script>
+</body>
+</html>
