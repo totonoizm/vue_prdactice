@@ -12,13 +12,17 @@
         </button>
         <transition name="fade">
             <p v-if="show">Hello</p>
+            <p v-else-if="maybeShow">maybe OK</p>
+            <p v-else="show">そしてGood BYE</p>
+            <p>そし</p><!-- elseを二つ並べたら動かない  -->
         </transition>
     </div>
   <script>
       new Vue({
           el: "#app",
           data:{
-            show: false
+            show: true,
+            maybeShow: false
           }
       })
 
